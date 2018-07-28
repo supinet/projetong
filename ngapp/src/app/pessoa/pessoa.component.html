@@ -1,0 +1,53 @@
+<div>
+  <table *ngFor="let pessoa of pessoas; let i = index;">
+    <thead>
+      <th>Ordem</th>
+      <th>Nome</th>
+      <th>Cpf</th>
+      <th>email</th>
+      <th>Idade</th>
+      <th>Imagem</th>
+      <th>Indade par/impar</th>
+    </thead>
+    <tbody>
+      <td>{{i}}</td>
+      <td>{{pessoa.nome}}</td>
+      <td>{{pessoa.cpfCnpj}}</td>
+      <td>{{pessoa.email}}</td>
+      <td>{{pessoa.idade}}</td>
+      <td><img [src]="pessoa.photo"></td>
+      <td *ngIf="pessoa.idade%2==0;then par else impar"></td>
+    </tbody>
+  </table>
+</div>
+
+<!-- usando ng-template -->
+<ng-template #par>
+    - é par
+</ng-template>
+  
+<ng-template #impar>
+    - é impar
+</ng-template>
+<!-- usando ng-template -->
+
+<!--bloqueando teclas-->
+<div>
+  <textarea name="a" id="a" cols="30" rows="10" (keypress)="textCheck($event)"></textarea>
+</div>
+<!--bloqueando teclas-->
+
+<!--mundado cores dinamicamente-->
+<div class="container">
+  <div class="buttons">
+    <button class="colorpicker blue" (click)="mudaCor('blue')"></button>
+    <button class="colorpicker red" (click)="mudaCor('red')"></button>
+    <button class="colorpicker yellow" (click)="mudaCor('yellow')"></button>
+    <button class="colorpicker green" (click)="mudaCor('green')"></button>
+    <button class="colorpicker black" (click)="mudaCor('black')"></button>
+  </div>
+  <div class="area-box">
+    <div class="area" [style.backgroundColor]="cor"></div>
+  </div>
+</div>
+<!--mundado cores dinamicamente-->
